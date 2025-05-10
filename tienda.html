@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda de Tote Bags</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .producto {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .producto img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .producto button {
+      margin-top: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .carrito {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .carrito h2 {
+      margin-top: 0;
+    }
+    .carrito ul {
+      list-style: none;
+      padding: 0;
+    }
+    .carrito li {
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .vaciar-btn {
+      margin-top: 15px;
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tienda de Tote Bags</h1>
+
+  <div class="productos">
+    <div class="producto">
+      <img src="https://via.placeholder.com/300x200?text=Tote+Bag+Gatuna" alt="Tote Bag Gatuna">
+      <h3>Tote Bag Gatuna</h3>
+      <p>$20</p>
+      <button onclick="agregarAlCarrito('Tote Bag Gatuna', 20)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://via.placeholder.com/300x200?text=Tote+Bag+Cósmica" alt="Tote Bag Cósmica">
+      <h3>Tote Bag Cósmica</h3>
+      <p>$25</p>
+      <button onclick="agregarAlCarrito('Tote Bag Cósmica', 25)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://via.placeholder.com/300x200?text=Tote+Bag+Vintage" alt="Tote Bag Vintage">
+      <h3>Tote Bag Vintage</h3>
+      <p>$18</p>
+      <button onclick="agregarAlCarrito('Tote Bag Vintage', 18)">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="carrito">
+    <h2>Carrito de compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p><strong>Total: $<span id="total">0</span></strong></p>
+    <button class="vaciar-btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+  </div>
+
+  <script>
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalSpan = document.getElementById('total');
+    let total = 0;
+
+    function agregarAlCarrito(nombre, precio) {
+      const item = document.createElement('li');
+      item.textContent = `${nombre} - $${precio}`;
+      listaCarrito.appendChild(item);
+      total += precio;
+      totalSpan.textContent = total;
+    }
+
+    function vaciarCarrito() {
+      listaCarrito.innerHTML = '';
+      total = 0;
+      totalSpan.textContent = total;
+    }
+  </script>
+
+</body>
+</html>
